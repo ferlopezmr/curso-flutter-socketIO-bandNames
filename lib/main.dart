@@ -1,6 +1,9 @@
 
 import 'package:bands/pages/home.dart';
+import 'package:bands/pages/status.dart';
+import 'package:bands/services/socket_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main()=> runApp(const MyApp());
 
@@ -9,19 +12,19 @@ class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      title:"material App",
-      debugShowCheckedModeBanner: false,
-      initialRoute: 'home',
-      routes: {
-        'home': (_)=>const HomePage()
-      },
-/*       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Band"),
-        ),
-        body: Center(child: Container(child: Text("Band"),)),
-      ), */
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_)=>SocketService())
+      ],
+      child: MaterialApp(
+        title:"material App",
+        debugShowCheckedModeBanner: false,
+        initialRoute: 'home',
+        routes: {
+          'home': (_)=>const HomePage(),
+          'status': (_)=>const StatusPage()
+        },
+      ),
     );
   }
 }
