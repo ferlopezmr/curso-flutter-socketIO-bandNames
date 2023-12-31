@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body:Column(
         children: [
-          _showGraph(),
+          if(bands.isNotEmpty) _showGraph(), 
           Expanded(
             child: ListView.builder(
               itemCount: bands.length,

@@ -1,6 +1,5 @@
 
 import 'package:bands/pages/home.dart';
-import 'package:bands/pages/status.dart';
 import 'package:bands/services/socket_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +21,6 @@ class MyApp extends StatelessWidget{
         initialRoute: 'home',
         routes: {
           'home': (_)=>const HomePage(),
-          'status': (_)=>const StatusPage()
         },
       ),
     );
